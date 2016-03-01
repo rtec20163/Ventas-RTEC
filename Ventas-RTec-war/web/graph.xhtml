@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html" xml:lang="es" lang="es" 
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core" >
+    <head>
+        <title>Ejemplo de aplicaci&oacute;n web hecha en Java</title>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <meta charset="UTF-8"/>
+        <meta name="author" content="Manuel Nachintoch Castillo" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body>
+        #{pintor.paintGraph()}
+        <div><h1>Estad&iacute;sticas de las ventas</h1>
+            <img src="img/grafica.png" alt="graficos" title="graficos" />
+            <p/>
+            <a href="img/grafica.png" title="descargar" >
+                Descargar gr&aacute;fico estad&iacute;stico
+            </a>
+            <p/>
+            <a href="index.xhtml" >Volver a la p&aacute;gina principal</a>
+            <hr/>
+            <p>Nachintoch estuvo aqu&iacute;</p>
+        </div>
+    </body>
+</html>

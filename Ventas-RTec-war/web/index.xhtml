@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html" xml:lang="es" lang="es" 
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core" >
+    <head>
+        <title>Sistema de ventas RTec</title>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <meta charset="UTF-8"/>
+        <meta name="author" content="RTecLab" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+        <style>   
+            table#t1{
+                width: 100%;
+            }
+            table#t1 tr:nth-child(even) {
+                background-color: #eee;
+            }
+            table#t1 tr:nth-child(odd) {
+                background-color:#fff;
+            }
+            table#t1 th	{
+                background-color: black;
+                color: white;
+            }
+        </style>
+        <!--
+        Si su página requiere de usar javascript, puede incluirlo aquí en el
+        encabezado de la siguiente forma:
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+        <script type="text/Yjavascript" src="js/algun.js" ></script>
+        
+        También puede incluir archivos CSS para estilo:
+        <link rel="stylesheet" href="css/algun.css" />
+        <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css" />
+        
+        Si posee un favicon en alguna parte del servidor, puede incluirlo
+        también:
+        <link rel="icon" type="image/png" href="img/favicon.ico"></link>
+        -->
+    </head>
+    <body>
+        <!--
+        Este comentario ejemplifica el uso de las etiqeutas "ui:"
+        Suponga que su aplicación web presenta el mismo encabezado en todas
+        las páginas. Puede definirlo en un archivo "encabezadoporejemplo.xhtml"
+        e importarlo en todas las demás. Para mayor orden, podría organizarlo
+        en alguna subcarpeta a partir del nievel de index.xhtml
+        <ui:insert >
+            <ui:include src="ruta/archivo/xhtml/encabezadoporejemplo.xhtml" />
+        </ui:insert>
+        
+        Esto insertará el código del archivo solicitado tal cual.
+        -->
+        <div><h1>Bienvenido</h1>
+
+
+            <h:form>
+                <fieldset>
+                    <legend>Corte de caja</legend>
+
+                    <table>
+                        <tr>
+                            <td>Fecha(dd-mm-aaaa):</td>
+                            <td><h:inputText id="fecha-input" value="#{ventaBruta.fecha}"
+                                             required="true"
+                                             requiredMessage="Es necesario ingresar una fecha valida"/>
+                                <h:message id="m1" for="fecha-input" style="color:red"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Capturista:</td>
+                            <td> <h:inputText  id="capturista-input" value="#{ventaBruta.capturista}"
+                                               required="true"
+                                               requiredMessage="Es necesario ingresar el nombre del capturista"/>
+                                <h:message id="m2" for="capturista-input" style="color:red"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Venta total:</td>
+                            <td><h:inputText  value="#{ventaBruta.monto}" /></td>
+                        </tr>
+                    </table>
+                    <br/>
+                    <h:commandButton id="solicitar" value="Registrar"
+                                     action="#{ventaBruta.insertar()}" />
+                </fieldset>
+            </h:form> 
+
+
+            <br/>
+
+
+            <p/>
+
+            <a href="graph.xhtml" >Ver estad&iacute;sticas</a>
+            <p>La base de datos contiene:</p>
+            <table id="t1">
+                <tr >
+                    <th >Fecha</th>
+                    <th >Capturista</th>
+                    <th >Venta Bruta</th>
+                    <th >IVA</th>
+                    <th >Venta Neta</th>                    
+                </tr>
+                <ui:repeat value="#{consultor.consultar()}" var="resultado" >
+                    <tr >
+                        <td >#{resultado.fecha}</td>
+                        <td >#{resultado.capturista}</td>
+                        <td >  $#{resultado.ventaBruta}</td>
+                        <td >#{resultado.iva}</td>
+                        <td >#{resultado.ventaNeta}</td>
+
+                    </tr>
+                </ui:repeat>
+            </table>
+
+
+            <hr/>
+            <p>RTecLab</p>
+        </div>
+    </body>
+</html>
