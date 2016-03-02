@@ -1,5 +1,5 @@
 CREATE TABLE ventas(
-fecha date PRYMARY KEY,
+fecha date PRIMARY KEY,
 capturista varchar(64) NOT NULL,
 ventabruta real
 );
